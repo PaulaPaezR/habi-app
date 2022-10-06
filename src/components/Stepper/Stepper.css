@@ -1,0 +1,139 @@
+.step {
+  display: none;
+}
+.step.active {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.step__position {
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+  background-color: #7c01ff;
+  border-radius: 50%;
+}
+.step__info {
+  display: flex;
+  flex-direction: column;
+}
+.step__label {
+  font-size: 11px;
+  color: #808080;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.step__title {
+  color: #1e1e1e;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.step__state {
+  width: fit-content;
+  color: #21c375;
+  font-size: 11px;
+  font-weight: bold;
+  background: #e1f9ed;
+  padding: 5px;
+  border-radius: 10px;
+}
+.step__state:empty {
+  display: none;
+}
+
+.step__state--progress {
+  color: #7c01ff;
+  background: #d9d9f2;
+}
+
+@media screen and (min-width: 768px) {
+  .step {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+  }
+  .step:not(:last-child)::before,
+  .step:not(:last-child)::after {
+    content: '';
+    width: calc(100% - 50px);
+    height: 3px;
+    background: #cbcbcb;
+    position: absolute;
+    top: 18px;
+  }
+  .step::before {
+    right: 0;
+  }
+  .step::after {
+    right: 0;
+  }
+  .step.completed:not(.active)::before,
+  .step.completed:not(.active)::after {
+    background: #21c375;
+  }
+  .step.active::before {
+    background: #7c01ff;
+  }
+  .step.active {
+    align-items: initial;
+    gap: 0;
+  }
+  .step__position {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+  .step .step__position {
+    color: #cbcbcb;
+    background: #ffffff;
+    border: 1px solid #cbcbcb;
+  }
+  .step.active .step__position {
+    background: #7c01ff;
+  }
+  .step.active .step__position::before {
+    content: '';
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid #7c01ff;
+    margin: auto auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+  }
+  .step.completed:not(.active) .step__position {
+    background: #21c375;
+    color: #ffffff;
+  }
+  .step__position > span {
+    display: none;
+  }
+  .step__label {
+    margin-bottom: 7px;
+  }
+  .step__title {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .step:not(:last-child)::before,
+  .step:not(:last-child)::after {
+    width: calc(100% - 60px);
+    right: 10px;
+  }
+}
